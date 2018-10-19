@@ -29,11 +29,11 @@ dictConfig({
 app = Flask(__name__)
 
 
-@app.route("/records")
+@app.route("/records", methods=['GET'])
 def index():
     with open('data/data.json') as f:
         data = json.load(f)
-    print data
+    print(data)
     return json.dumps(data, indent=4)
 
 if __name__ == '__main__':
