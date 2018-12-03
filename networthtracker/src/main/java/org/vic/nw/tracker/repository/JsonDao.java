@@ -1,7 +1,8 @@
 package org.vic.nw.tracker.repository;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.vic.nw.tracker.model.Record;
 
@@ -13,14 +14,16 @@ import java.util.List;
 @Service
 public class JsonDao {
 
-    public List<Record> getRecords(String pathname){
-        
-        ObjectMapper mapper = new ObjectMapper();
+    @Autowired
+    ObjectMapper objectMapper;
+
+    public List<Record> getRecords(String pathname) {
+
         try {
-            return mapper.readValue(new File(pathname), List.class);
+            return objectMapper.readValue(new File(pathname), new TypeReference<List<Record>>() {});
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new ArrayList<Record>();
+        return new ArrayList<>();
     }
 }

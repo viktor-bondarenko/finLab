@@ -1,11 +1,37 @@
 [
   {
+    "some_weird_stuff":"oops...",
     "date":"2018-10-01",
     "assets":[
       {
+        "some_weird_stuff":"oops...",
         "name":"401K",
         "value":20301.32,
         "contribution":1000
+      },
+      {
+        "name":"money chart",
+        "value":720
+      }
+    ]
+  },
+  {
+    "date":"2018-11-01",
+    "assets":[
+      {
+        "name":"401K",
+        "value":21401.32,
+        "contribution":1000
+      },
+      {
+        "name":"money chart",
+        "value":800
+      }
+    ]  ,
+    "liabilities":[
+      {
+        "name":"car",
+        "value":10000
       }
     ]
   }
