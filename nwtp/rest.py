@@ -4,7 +4,6 @@ app = Flask(__name__, static_url_path='')
 
 @app.route("/", methods=['GET'])
 def root():
-    template_name_or_list = url_for('static', filename='index.html')
     return app.send_static_file('index.html')
 
 
