@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="finApp">
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
-    <script src="./lib/angular.js"></script>
+    <link href="app/css/bootstrap.css" rel="stylesheet"/>
+    <link href="app/app.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    main SPA!
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="MenuController as mc">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggler" ng-init="mc.isCollapsed = true" ng-click="mc.isCollapsed = !mc.isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">
+                My App
+            </div>
+        </div>
+        <!--<div>-->
+        <!--</div>-->
+        <!--<div class="collapse navbar-collapse">-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li uib-dropdown="">-->
+                    <!--<a href="#" uib-dropdown-toggle="">-->
+                        <!--Dropdown-->
+                        <!--<b class="caret"></b>-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--class = "collapse "-->
+        <div class="navbar-collapse" ng-class="!mc.isCollapsed && 'in'">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="link in mc.links">
+                    <a ng-class="{active: mc.isActive(link.url)}" href="{{link.url}}">{{link.text}} |
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div ng-view></div>
+</div>
+
+<script src="lib/angular.js"></script>
+<script src="lib/angular-route.js"></script>
+<script src="lib/angular-animate.js"></script>
+<script src="lib/ui-bootstrap-tpls-1.3.3.js"></script>
+
+<script src="app/app.js"></script>
+<script src="app/menu/menu.module.js"></script>
+<script src="app/menu/MenuController.js"></script>
+<script src="app/nwt/nwt.module.js"></script>
+<script src="app/nwt/NumbersController.js"></script>
+<script src="app/nwt/GraphsController.js"></script>
+
 </body>
 </html>
